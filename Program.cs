@@ -11,10 +11,13 @@ namespace EmployeeWagesProblem
             int Emp_Rate_Per_Hour = 20;
             const int IS_PART_TIME = 2;
             const int Num_Of_working_Days = 3;
+            const int Max_Hrs_In_Month = 100;
             int totalempWage = 0;
+            int totalEmpHrs = 0;
             int empHrs = 0;
             int empWage = 0;
-            for (int day = 0; day < Num_Of_working_Days; day++)
+            int totalWorkingDays = 0;
+            while (totalEmpHrs <= Max_Hrs_In_Month && totalWorkingDays < Num_Of_working_Days)
             {
                 Random random = new Random();
                 int empCheck = random.Next(0, 2);
@@ -23,7 +26,7 @@ namespace EmployeeWagesProblem
                     case IS_FULL_TIME:
                         Console.WriteLine("Employee is full time");
                         empHrs = 8;
-                        empWage = empHrs * Emp_Rate_Per_Hour;
+                        totalempWage = totalEmpHrs * Emp_Rate_Per_Hour;
                         break;
 
                     case IS_PART_TIME:
@@ -35,10 +38,10 @@ namespace EmployeeWagesProblem
                         Console.WriteLine("Employee is absent");
                         break;
                 }
-                totalempWage += empWage;
-                Console.WriteLine("Emp Wage : " + empWage);
+                totalEmpHrs = totalEmpHrs + empHrs;
+                Console.WriteLine("Day : " + totalWorkingDays + "Emp Hrs: " + empHrs);
             }
-            Console.WriteLine("Total EmpWage:" + totalempWage);
+              Console.WriteLine("Total Emp Wage for a Month: " + totalempWage);
         }
     }
 }
