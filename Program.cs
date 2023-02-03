@@ -10,12 +10,11 @@ namespace EmployeeWagesProblem
             const int IS_PART_TIME = 2;
             const int Num_Of_working_Days = 3;
             const int Max_Hrs_In_Month = 100;
-        public static int computeEmpWage()
+        public static int computeEmpWage(string Company, int empRatePerHrs, int numOfWorkingDays, int maxHrsPerMonth)
         {
             int totalWorkingDays = 0, totalEmpHrs = 0, empHrs = 0;
             while (totalEmpHrs <= Max_Hrs_In_Month && totalWorkingDays < Num_Of_working_Days)
             {
-                totalWorkingDays++;
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
                 switch (empCheck)
@@ -36,12 +35,13 @@ namespace EmployeeWagesProblem
                 Console.WriteLine("Day : " + totalWorkingDays + "Emp Hrs: " + empHrs);
             }
             int totalEmpWage = totalEmpHrs * Emp_Rate_Per_Hour;
-            Console.WriteLine("Total Emp Wage for a Month: " + totalEmpWage);
+            Console.WriteLine("Total Emp Wage for a Company:"+Company+"Is:" + totalEmpWage);
             return totalEmpWage;
         }
         public static void Main(string[] args)
         {
-            computeEmpWage();
+            computeEmpWage("Paytm",20,30,50);
+            computeEmpWage("GooglePay", 30, 50, 60);
         }
     }
 }
